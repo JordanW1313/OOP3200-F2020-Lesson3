@@ -12,6 +12,21 @@ CartesianPoint::CartesianPoint(int x, int y)
 	SetPoint(x, y);
 }
 
+CartesianPoint::~CartesianPoint()
+= default;
+
+double CartesianPoint::operator-(const CartesianPoint& pointTo) const
+{
+	// difference between x values
+	int xDelta = pointTo.myX - myX;
+
+	// difference between y values
+	int yDelta = pointTo.myY - myY;
+
+	// return the formula (based on Pythagorean theorem)
+	return sqrt((xDelta * xDelta) + (yDelta * yDelta));
+}
+
 void CartesianPoint::SetPoint(int x, int y)
 {
 	SetX(x);
@@ -28,12 +43,12 @@ void CartesianPoint::SetY(int y)
 	myY = y;
 }
 
-int CartesianPoint::GetX()
+int CartesianPoint::GetX() const
 {
 	return myX;
 }
 
-int CartesianPoint::GetY()
+int CartesianPoint::GetY() const
 {
 	return myY;
 }
@@ -44,7 +59,7 @@ int CartesianPoint::GetY()
 *	@param	pointTo: CartesianPoint
 *	@return	the distance as a double
 */
-double CartesianPoint::GetDistanceTo(CartesianPoint pointTo) const
+double CartesianPoint::GetDistanceTo(const CartesianPoint& pointTo) const
 {
 	// difference between x values
 	int xDelta = pointTo.myX - myX;
